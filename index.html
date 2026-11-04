@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUKA VANCE — Fashion Editorial Portfolio</title>
+  <meta name="description" content="Editorial Model Portfolio featuring photographic silhouettes, kinetic typography, and scroll choreography powered by StringTune.">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='black'/><text y='70' x='50' text-anchor='middle' font-family='sans-serif' font-size='60' font-weight='bold' fill='white'>L</text></svg>">
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="loader.css">
+  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="FlexCarousel.css">
+  
+  <!-- GSAP Core for Initial Cinematic Loader -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body>
+
+  <!-- =========================================================================
+       LUKA CINEMATIC INTRO / LOADING ANIMATION COMPONENT
+       Recreates reference blue-gradient kinetic perimeter convergence into "LUKA"
+       ========================================================================= -->
+  <div id="luka-loader" class="luka-loader" role="status" aria-label="Loading Luka Vance Editorial">
+    <!-- Dynamic Blue Blurred Gradient Field -->
+    <div class="luka-loader-bg">
+      <div class="luka-glow-orb luka-glow-orb-1"></div>
+      <div class="luka-glow-orb luka-glow-orb-2"></div>
+      <div class="luka-glow-orb luka-glow-orb-3"></div>
+    </div>
+    <div class="luka-loader-noise"></div>
+
+    <!-- Animation Stage: Kinetic Letters & Responsive Alignment Target -->
+    <div class="luka-loader-stage">
+      <!-- Responsive Layout Ghost Target (Exact typographic kerning & baseline) -->
+      <div class="luka-target-word" aria-hidden="true">
+        <span class="luka-target-slot" data-slot="0">L</span>
+        <span class="luka-target-slot" data-slot="1">U</span>
+        <span class="luka-target-slot" data-slot="2">K</span>
+        <span class="luka-target-slot" data-slot="3">A</span>
+      </div>
+
+      <!-- The 4 Kinetic Letters -->
+      <span class="luka-flying-letter" data-letter="L" aria-hidden="true">L</span>
+      <span class="luka-flying-letter" data-letter="U" aria-hidden="true">U</span>
+      <span class="luka-flying-letter" data-letter="K" aria-hidden="true">K</span>
+      <span class="luka-flying-letter" data-letter="A" aria-hidden="true">A</span>
+    </div>
+  </div>
+  <script src="loader.js"></script>
+
+  <!-- =========================================================================
+       HERO: Model Cutout on Left, Opposing Text Movement Behind Subject
+       ========================================================================= -->
+  <section class="hero-track" id="hero" string="progress" string-id="hero-track" aria-label="Hero Section">
+    <div class="hero-sticky-canvas">
+      
+      <!-- Minimal Unobtrusive Editorial Navigation (Visible only within Hero Section) -->
+      <header class="site-nav" role="banner">
+        <a href="#" class="nav-brand" aria-label="Home — LUKA VANCE">LUKA VANCE</a>
+        <nav aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li><a href="#portraits-section">PORTRAITS</a></li>
+            <li><a href="#standing-section">STANDING</a></li>
+            <li><a href="#runway-section">RUNWAY</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+      <!-- Typography Layer: Sits behind model cutout in foreground -->
+      <div class="hero-typography-layer" aria-hidden="true">
+        
+        <!-- Row 1: Main Name — Moves LEFT on scroll -->
+        <div class="hero-text-row-main" id="hero-main-row">
+          <span class="hero-title-main">LUKA VANCE</span>
+          <span class="hero-title-main">LUKA VANCE</span>
+          <span class="hero-title-main">LUKA VANCE</span>
+        </div>
+
+        <!-- Row 2: Secondary Text — Moves RIGHT on scroll -->
+        <div class="hero-text-row-sub" id="hero-sub-row">
+          <span class="hero-title-sub">AUTUMN / WINTER ARCHIVE</span>
+          <span class="hero-title-sub">MONOCHROME EDITORIAL</span>
+          <span class="hero-title-sub">SILHOUETTE & FORM</span>
+        </div>
+
+        <!-- Row 3: Cursive Editorial Accent — Drifts subtly -->
+        <div class="hero-accent-cursive" id="hero-cursive">
+          monochrome editorial
+        </div>
+
+      </div>
+
+      <!-- Foreground Model Cutout: Anchored on the Left -->
+      <div class="hero-model-container" id="hero-model">
+        <picture>
+          <source srcset="images/hero-model-cutout-cropped.webp" type="image/webp">
+          <img 
+            src="images/hero-model-cutout-cropped.png" 
+            alt="LUKA VANCE Editorial Silhouette" 
+            class="hero-model-cutout"
+            width="712" 
+            height="963" 
+            loading="eager" 
+            fetchpriority="high"
+          >
+        </picture>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       PARALLAX SCROLLING SECTION (MODEL EDITORIAL LANDSCAPE)
+       ========================================================================= -->
+  <div class="parallax" id="parallax-section">
+    <section class="parallax__header">
+      <div class="parallax__visuals">
+        <div class="parallax__black-line-overflow"></div>
+        <div data-parallax-layers class="parallax__layers">
+          <!-- Layer 1: Background Sky & Atmosphere -->
+          <img src="images/parallax/layer-1-sky.webp" loading="eager" width="2000" height="1906" data-parallax-layer="1" alt="Twilight Atmosphere" class="parallax__layer-img" />
+          
+          <!-- Layer 2: Midground Alpine Mountain Peak -->
+          <img src="images/parallax/layer-2-mountain.webp" loading="eager" width="2000" height="1906" data-parallax-layer="2" alt="Mountain Ridge" class="parallax__layer-img" />
+          
+          <!-- Layer 3: Typography Layer (Behind Model Cutout) -->
+          <div data-parallax-layer="3" class="parallax__layer-title">
+            <h2 class="parallax__title">SERVE</h2>
+          </div>
+          
+          <!-- Layer 4: Foreground Ridge with Standing Model Cutout -->
+          <img src="images/parallax/layer-4-model-foreground.webp?v=2" loading="eager" width="2000" height="1906" data-parallax-layer="4" alt="Luka Vance Standing on Ridge" class="parallax__layer-img" />
+        </div>
+        <div class="parallax__fade"></div>
+      </div>
+    </section>
+    <section class="parallax__content">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 160 160" fill="none" class="osmo-icon-svg">
+        <path d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z" fill="currentColor"></path>
+      </svg>
+    </section>
+  </div>
+
+  <!-- =========================================================================
+       EDITORIAL PHOTOGRAPHIC JOURNEY
+       ========================================================================= -->
+  <main class="editorial-journey" id="editorial-work">
+
+    <!-- SECTION 01: INTRODUCTION & SPECIFICATIONS (CENTERED CUTOUT + KINETIC BACKDROP) -->
+    <section class="scene-track intro-track" id="intro-section" string="progress" string-id="intro-section" aria-label="Model Profile and Specifications">
+      <div class="scene-sticky-frame">
+        <div class="intro-canvas">
+          
+          <!-- Kinetic typography moving horizontally behind close-up -->
+          <div class="intro-backdrop-text" aria-hidden="true">
+            <div class="intro-text-row" id="intro-text">
+              LUKA VANCE &nbsp; PLATINUM ARCHIVE &nbsp; LUKA VANCE &nbsp; PLATINUM ARCHIVE &nbsp; LUKA VANCE
+            </div>
+          </div>
+
+          <!-- Centered Foreground Stage: Cutout in Middle + Specs Ribbon Below -->
+          <div class="intro-center-stage">
+            
+            <!-- Centered Platinum Detail Close-up Model Cutout -->
+            <div class="intro-image-wrap" id="intro-img">
+              <picture>
+                <source srcset="images/intro-model-cutout-cropped.webp" type="image/webp">
+                <img 
+                  src="images/intro-model-cutout-cropped.png" 
+                  alt="LUKA VANCE Platinum Detail Close-up Cutout" 
+                  class="intro-cutout-photo"
+                  width="1542" 
+                  height="941" 
+                  loading="lazy"
+                >
+              </picture>
+            </div>
+
+            <!-- Model Editorial Information & Attributes Centered Below Image -->
+            <div class="intro-specs-below" id="intro-specs">
+              <div class="intro-specs-header">
+                <span class="scene-index">01 / IDENTIFICATION</span>
+                <h2 class="intro-model-name">LUKA VANCE</h2>
+                <span class="scene-cursive intro-cursive">haute couture &amp; streetwear</span>
+              </div>
+              
+              <div class="model-specs-ribbon">
+                <div class="spec-ribbon-item">
+                  <span class="spec-ribbon-label">HEIGHT</span>
+                  <span class="spec-ribbon-val">188 CM &bull; 6'2"</span>
+                </div>
+                <div class="spec-ribbon-item">
+                  <span class="spec-ribbon-label">CHEST</span>
+                  <span class="spec-ribbon-val">96 CM &bull; 38"</span>
+                </div>
+                <div class="spec-ribbon-item">
+                  <span class="spec-ribbon-label">WAIST</span>
+                  <span class="spec-ribbon-val">76 CM &bull; 30"</span>
+                </div>
+                <div class="spec-ribbon-item">
+                  <span class="spec-ribbon-label">HAIR</span>
+                  <span class="spec-ribbon-val">PLATINUM BLONDE</span>
+                </div>
+                <div class="spec-ribbon-item">
+                  <span class="spec-ribbon-label">EYES</span>
+                  <span class="spec-ribbon-val">DARK HAZEL</span>
+                </div>
+                <div class="spec-ribbon-item">
+                  <span class="spec-ribbon-label">SHOES</span>
+                  <span class="spec-ribbon-val">44 EU &bull; 10.5 US</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 02: PORTRAIT PHOTOS COLLECTION (ALL 6 WHOLE PHOTOS)
+         Single scroll step transitions photo & description in sync
+         ======================================================================= -->
+    <!-- =======================================================================
+         SECTION 02: PORTRAIT PHOTOS (ALL 6 WHOLE PHOTOS VIA FLEX CAROUSEL)
+         Interactive WebGL Liquid FlexCarousel with 'deal' entrance
+         ======================================================================= -->
+    <section class="editorial-carousel-section" id="portraits-section" aria-label="Portrait Photography Collection">
+      <div class="carousel-section-container">
+        <div class="carousel-section-header">
+          <div class="collection-header-tag">02 / PORTRAIT COLLECTION</div>
+          <div class="carousel-header-flex">
+            <h2 class="carousel-section-title">PORTRAIT ARCHIVE</h2>
+            <span class="scene-cursive carousel-cursive">intensity in stillness</span>
+          </div>
+        </div>
+        
+        <div id="portraits-carousel" class="flex-carousel-host" style="width: 100%; height: 560px; position: relative;"></div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 03: STANDING POSES (SPATIAL EDITORIAL CANVAS VIA STRINGTUNE)
+         Scroll-driven spatial motion, custom trajectories, accurate short captions
+         ======================================================================= -->
+    <section class="standing-poses-track" id="standing-section" string="progress" string-id="standing-section" aria-label="Standing Photography Collection">
+      
+      <!-- Minimal Sticky Editorial Frame -->
+      <div class="standing-sticky-stage">
+
+        <!-- Minimal Section Introduction -->
+        <div class="standing-intro-block" id="standing-intro-block">
+          <span class="standing-eyebrow">THE MODEL</span>
+          <h2 class="standing-heading-main">
+            STANDING<br>STUDIES.
+          </h2>
+          <span class="standing-accent-cursive">spatial silhouettes</span>
+        </div>
+
+        <!-- Continuous Spatial Editorial Canvas -->
+        <div class="standing-canvas" id="standing-canvas">
+
+          <!-- Pose 01: Dominant Full-Length Relaxed Stance (Minimalist Taupe Knit & Trouser) -->
+          <article class="pose-entity pose-entity-1" id="pose-card-1" data-index="1" aria-label="Standing Pose 01">
+            <div class="pose-media-box">
+              <picture>
+                <source srcset="images/standing/standing-1.webp" type="image/webp">
+                <img 
+                  src="images/standing/standing-1.png" 
+                  alt="Luka Vance relaxed standing pose in taupe monochrome knitwear" 
+                  class="pose-photograph" 
+                  width="1672" 
+                  height="941" 
+                  loading="eager"
+                >
+              </picture>
+            </div>
+            <div class="pose-caption-block" id="pose-caption-1">
+              <span class="pose-index-tag">01 &mdash; 04</span>
+              <p class="pose-narrative">Relaxed stance with three-quarter turn</p>
+              <span class="pose-subdetail">Studio neutral lighting &bull; tailored poise</span>
+            </div>
+          </article>
+
+          <!-- Pose 02: Architectural Poised Posture (Dark Tailored Jacket & Clean Silhouette) -->
+          <article class="pose-entity pose-entity-2" id="pose-card-2" data-index="2" aria-label="Standing Pose 02">
+            <div class="pose-media-box">
+              <picture>
+                <source srcset="images/standing/standing-2.webp" type="image/webp">
+                <img 
+                  src="images/standing/standing-2.png" 
+                  alt="Luka Vance straight-on studio posture in dark tailored overshirt" 
+                  class="pose-photograph" 
+                  width="1672" 
+                  height="941" 
+                  loading="lazy"
+                >
+              </picture>
+            </div>
+            <div class="pose-caption-block" id="pose-caption-2">
+              <span class="pose-index-tag">02 &mdash; 04</span>
+              <p class="pose-narrative">Full-length, straight-on studio pose</p>
+              <span class="pose-subdetail">Poised direct gaze &bull; architectural form</span>
+            </div>
+          </article>
+
+          <!-- Pose 03: Platinum Streetwear Archive (Dynamic Layered Coat & Athletic Poise) -->
+          <article class="pose-entity pose-entity-3" id="pose-card-3" data-index="3" aria-label="Standing Pose 03">
+            <div class="pose-media-box">
+              <picture>
+                <source srcset="images/standing/standing-3.webp" type="image/webp">
+                <img 
+                  src="images/standing/standing-3.png" 
+                  alt="Luka Vance poised standing composition in layered streetwear styling" 
+                  class="pose-photograph" 
+                  width="1672" 
+                  height="941" 
+                  loading="lazy"
+                >
+              </picture>
+            </div>
+            <div class="pose-caption-block" id="pose-caption-3">
+              <span class="pose-index-tag">03 &mdash; 04</span>
+              <p class="pose-narrative">Poised standing composition in tailored styling</p>
+              <span class="pose-subdetail">Layered volume &bull; platinum hair texture</span>
+            </div>
+          </article>
+
+          <!-- Pose 04: Urban High Street Silhouette (Clean Geometric Stance in Negative Space) -->
+          <article class="pose-entity pose-entity-4" id="pose-card-4" data-index="4" aria-label="Standing Pose 04">
+            <div class="pose-media-box">
+              <picture>
+                <source srcset="images/standing/standing-4.webp" type="image/webp">
+                <img 
+                  src="images/standing/standing-4.png" 
+                  alt="Luka Vance full-body pose framed by generous studio negative space" 
+                  class="pose-photograph" 
+                  width="1672" 
+                  height="941" 
+                  loading="lazy"
+                >
+              </picture>
+            </div>
+            <div class="pose-caption-block" id="pose-caption-4">
+              <span class="pose-index-tag">04 &mdash; 04</span>
+              <p class="pose-narrative">Full-body pose framed by generous negative space</p>
+              <span class="pose-subdetail">High-street silhouette &bull; minimalist stance</span>
+            </div>
+          </article>
+
+          <!-- Opposing Lateral Background Typography Interlude (Two Opposing Lines) -->
+          <div class="standing-spatial-typography" id="standing-spatial-typo" aria-hidden="true">
+            <!-- Row 1: Moves LEFT on scroll -->
+            <div class="standing-typo-row standing-typo-row-left" id="standing-typo-row-1">
+              <span class="spatial-typo-word">SILHOUETTE</span>
+              <span class="spatial-typo-word">STRUCTURE</span>
+              <span class="spatial-typo-word">PROPORTION</span>
+              <span class="spatial-typo-word">POSTURE</span>
+              <span class="spatial-typo-word">SILHOUETTE</span>
+              <span class="spatial-typo-word">STRUCTURE</span>
+            </div>
+            <!-- Row 2: Moves RIGHT on scroll -->
+            <div class="standing-typo-row standing-typo-row-right" id="standing-typo-row-2">
+              <span class="spatial-typo-word">ARCHIVE</span>
+              <span class="spatial-typo-word">FORM</span>
+              <span class="spatial-typo-word">STILLNESS</span>
+              <span class="spatial-typo-word">MONOCHROME</span>
+              <span class="spatial-typo-word">ARCHIVE</span>
+              <span class="spatial-typo-word">FORM</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Subtle Minimal Bottom Counter Indicator -->
+        <div class="standing-canvas-tracker" aria-hidden="true">
+          <span class="tracker-prefix">STANDING</span>
+          <span class="tracker-digits" id="standing-tracker-num">01 / 04</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 04: RUNWAY / RAMP WALK (SPLIT-SCREEN SLIDING ADVENTURE)
+         ========================================================================= -->
+    <section class="runway-adventure-section" id="runway-section" string="progress" string-id="runway-section" aria-label="Runway Ramp Walk Showcase">
+      <div class="runway-sticky-stage">
+        <div class="runway-adventure-container" id="runway-adventure" role="region" aria-roledescription="carousel" aria-label="Runway Walk Exhibition">
+        
+          <!-- Slide 1 (Page 1): Ivory Runway in Spotlight -->
+          <!-- Left: Image | Right: Content -->
+          <div class="runway-slide is-active" data-index="1" id="runway-slide-1">
+            <!-- Left Half (Slides up from bottom when entering from below) -->
+            <div class="runway-half runway-half-left">
+              <div class="runway-bg-cover" style="background-image: url('images/runway/runway-1-spotlight.webp');">
+                <div class="runway-half-inner"></div>
+              </div>
+            </div>
+            <!-- Right Half (Slides down from top when entering from below) -->
+            <div class="runway-half runway-half-right runway-content-bg">
+              <div class="runway-half-inner runway-content-panel">
+                <span class="runway-eyebrow">01 &mdash; RUNWAY WALK</span>
+                <h2 class="runway-heading">IVORY SPOTLIGHT</h2>
+                <p class="runway-description">
+                  Commanding presence under stark architectural lighting. A dramatic tailored silhouette crafted in textured ivory, moving with deliberate tempo across the central catwalk.
+                </p>
+                <div class="runway-specs-meta">
+                  <span>LOOK 01 / AUTUMN ARCHIVE</span>
+                  <span>PARIS FASHION WEEK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 (Page 2): Platinum Model on a Cream Runway -->
+          <!-- Left: Content | Right: Image -->
+          <div class="runway-slide" data-index="2" id="runway-slide-2">
+            <!-- Left Half -->
+            <div class="runway-half runway-half-left runway-content-bg">
+              <div class="runway-half-inner runway-content-panel">
+                <span class="runway-eyebrow">02 &mdash; RUNWAY WALK</span>
+                <h2 class="runway-heading">CREAM SILHOUETTE</h2>
+                <p class="runway-description">
+                  Fluid draped tailoring meets high-impact runway geometry. Sculpted platinum styling paired with serene monochromatic minimalism, defining contemporary haute couture proportions.
+                </p>
+                <div class="runway-specs-meta">
+                  <span>LOOK 02 / MONOCHROME SALON</span>
+                  <span>MILAN PRESENTATION</span>
+                </div>
+              </div>
+            </div>
+            <!-- Right Half -->
+            <div class="runway-half runway-half-right">
+              <div class="runway-bg-cover" style="background-image: url('images/runway/runway-2-cream.webp');">
+                <div class="runway-half-inner"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 (Page 3): Platinum Stride on the Runway -->
+          <!-- Left: Image | Right: Content -->
+          <div class="runway-slide" data-index="3" id="runway-slide-3">
+            <!-- Left Half -->
+            <div class="runway-half runway-half-left">
+              <div class="runway-bg-cover" style="background-image: url('images/runway/runway-3-stride.webp');">
+                <div class="runway-half-inner"></div>
+              </div>
+            </div>
+            <!-- Right Half -->
+            <div class="runway-half runway-half-right runway-content-bg">
+              <div class="runway-half-inner runway-content-panel">
+                <span class="runway-eyebrow">03 &mdash; RUNWAY WALK</span>
+                <h2 class="runway-heading">STRIDE & FORM</h2>
+                <p class="runway-description">
+                  Uncompromising momentum in motion. The signature forward stride captured mid-pace—showcasing pristine garment drape, kinetic tension, and poise.
+                </p>
+                <div class="runway-specs-meta">
+                  <span>LOOK 03 / FINALE STRIDE</span>
+                  <span>NEW YORK COLLECTION</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Minimal Vertical Slide Indicator (Progress dots only, NO arrow buttons) -->
+          <div class="runway-controls" aria-label="Runway Slide Navigation">
+            <div class="runway-dots" id="runway-dots" role="tablist">
+              <button class="runway-dot is-active" data-page="1" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+              <button class="runway-dot" data-page="2" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+              <button class="runway-dot" data-page="3" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+            </div>
+          </div>
+
+          <!-- Section Progress Indicator Counter -->
+          <div class="runway-counter" aria-hidden="true">
+            <span class="runway-counter-label">RAMP WALK</span>
+            <span class="runway-counter-nums" id="runway-counter-nums">01 / 03</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       FOOTER: ONLY THE MODEL'S NAME
+       ========================================================================= -->
+  <footer class="site-footer" id="footer" string="progress" string-id="footer-section" role="contentinfo" aria-label="Closing">
+    <div class="footer-name-wrap" id="footer-wrap">
+      <h2 class="footer-model-name">LUKA VANCE</h2>
+    </div>
+  </footer>
+
+  <!-- GSAP, ScrollTrigger & Lenis for ParallaxComponent -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <!-- Application Motion Controller -->
+  <script type="module" src="main.js?v=3"></script>
+
+</body>
+</html>

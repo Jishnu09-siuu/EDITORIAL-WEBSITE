@@ -1,0 +1,1617 @@
+/* ==========================================================================
+   MONOCHROME EDITORIAL MODEL PORTFOLIO
+   Typography: Google Sans + Allura
+   Palette: Strictly Monochromatic (#FFFFFF, #000000, #111111)
+   Powered by StringTune
+   ========================================================================== */
+
+:root {
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-dark: #111111;
+  --color-muted: #767676;
+  --color-border: #E5E5E5;
+
+  --font-sans: "Google Sans", "Google Sans Display", "Product Sans", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-cursive: "Allura", cursive;
+
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide sliding scrollbar across all browsers while keeping smooth scrolling */
+html,
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto; /* Managed by StringTune */
+  overflow-x: clip; /* Clean clip prevents horizontal bleed without breaking position: sticky */
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-dark);
+  overflow-x: clip; /* Clean clip prevents horizontal bleed without breaking position: sticky */
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  cursor: default; /* Clean native cursor */
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid var(--color-dark);
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   Minimal, unobtrusive, pure editorial
+   ========================================================================== */
+.site-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.2rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+  mix-blend-mode: normal;
+}
+
+.site-nav a,
+.site-nav .nav-brand {
+  pointer-events: auto;
+  text-decoration: none;
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: opacity 0.3s var(--ease-editorial);
+}
+
+.site-nav a:hover {
+  opacity: 0.5;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links li a {
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   HERO SECTION — THE DEFINING EDITORIAL EXPERIENCE
+   Model Cutout on the Left, Opposing Text Movement Behind Subject
+   ========================================================================== */
+.hero-track {
+  position: relative;
+  width: 100%;
+  height: 240vh; /* Deliberate scroll track for continuous choreography */
+  background: var(--color-white);
+}
+
+.hero-sticky-canvas {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+}
+
+/* LAYER 1: TYPOGRAPHY BACKGROUND (Behind the model) */
+.hero-typography-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2; /* Sits behind model cutout (z-index: 10) */
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Row 1: Main Name (Moves LEFT) */
+.hero-text-row-main {
+  white-space: nowrap;
+  will-change: transform;
+  transform: translate3d(var(--hero-main-x, 0px), 0, 0);
+  line-height: 0.88;
+}
+
+.hero-title-main {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: clamp(5.5rem, 15vw, 15rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--color-black);
+  text-transform: uppercase;
+  padding-right: 6vw;
+}
+
+/* Row 2: Secondary Text (Moves RIGHT) */
+.hero-text-row-sub {
+  white-space: nowrap;
+  will-change: transform;
+  transform: translate3d(var(--hero-sub-x, 0px), 0, 0);
+  margin-top: 1.5vh;
+  line-height: 0.95;
+}
+
+.hero-title-sub {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: clamp(2.4rem, 6.5vw, 6.2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+  text-transform: uppercase;
+  padding-right: 8vw;
+}
+
+/* Row 3: Cursive Editorial Accent (Drifts subtly) */
+.hero-accent-cursive {
+  position: absolute;
+  left: clamp(24vw, 36vw, 45vw);
+  bottom: 12vh;
+  font-family: var(--font-cursive);
+  font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+  color: var(--color-black);
+  will-change: transform;
+  transform: translate3d(var(--hero-cursive-x, 0px), 0, 0);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* LAYER 2: FOREGROUND MODEL CUTOUT */
+.hero-model-container {
+  position: absolute;
+  left: clamp(2vw, 5vw, 8vw);
+  bottom: 0;
+  height: 83vh;
+  max-height: calc(100vh - 75px);
+  z-index: 10; /* Visual foreground: Text in Layer 1 visibly travels behind the body */
+  pointer-events: none;
+  will-change: transform, opacity;
+  transform: translate3d(var(--hero-cutout-x, 0px), var(--hero-cutout-y, 0px), 0) scale(var(--hero-cutout-scale, 1));
+  opacity: var(--hero-cutout-opacity, 1);
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-model-container picture {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+.hero-model-cutout {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: bottom left;
+  user-select: none;
+  -webkit-user-drag: none;
+  /* Crisp rendering with no edge artifacts */
+  filter: contrast(1.02);
+}
+
+/* Minimal hero editorial indicator */
+.hero-meta {
+  position: absolute;
+  right: 3.5rem;
+  bottom: 2.8rem;
+  z-index: 20;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   EDITORIAL SCENES — ASYMMETRICAL & DIAGONAL COMPOSITIONS
+   ========================================================================== */
+.editorial-journey {
+  position: relative;
+  width: 100%;
+  background: var(--color-white);
+}
+
+/* Scene Track Base */
+.scene-track {
+  position: relative;
+  width: 100%;
+  min-height: 170vh;
+  background: var(--color-white);
+}
+
+.scene-sticky-frame {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   COLLECTION SECTIONS: PORTRAITS (02) & STANDING POSES (03)
+   Integrated with React Bits WebGL FlexCarousel (liquid preset + deal intro)
+   ========================================================================== */
+.editorial-carousel-section {
+  position: relative;
+  width: 100%;
+  padding: 6rem 4vw 6rem;
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.carousel-section-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.carousel-section-header {
+  margin-bottom: 2rem;
+  padding: 0 clamp(0.5rem, 2vw, 2rem);
+}
+
+.carousel-header-flex {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.carousel-section-title {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.carousel-cursive {
+  font-family: var(--font-cursive);
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  color: #333333;
+}
+
+.carousel-hint-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-top: 0.5rem;
+}
+
+.flex-carousel-host {
+  width: 100%;
+  height: 560px;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.collection-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  height: 80vh;
+  display: grid;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 6rem);
+}
+
+/* ==========================================================================
+   SECTION 03: STANDING POSES (SPATIAL EDITORIAL CANVAS VIA STRINGTUNE)
+   ========================================================================== */
+.standing-poses-track {
+  position: relative;
+  width: 100%;
+  min-height: 400vh; /* Controlled, natural scroll distance for all 4 poses */
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+}
+
+.standing-sticky-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-white);
+  will-change: transform;
+}
+
+/* 03. Section Introduction: Minimal Eyebrow & Large Heading */
+.standing-intro-block {
+  position: absolute;
+  top: 10vh;
+  left: 6vw;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  will-change: transform, opacity;
+  transition: opacity 0.4s ease-out;
+}
+
+.standing-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.standing-heading-main {
+  font-family: var(--font-sans);
+  font-size: clamp(3rem, 6.5vw, 5.8rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-black);
+  margin: 0;
+}
+
+.standing-accent-cursive {
+  font-family: var(--font-cursive);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: #333333;
+  margin-top: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+/* Continuous Spatial Canvas */
+.standing-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Pose Article Entities */
+.pose-entity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  will-change: transform, opacity;
+  transform-origin: center center;
+  transition: box-shadow 0.4s var(--ease-editorial);
+}
+
+.pose-media-box {
+  position: relative;
+  overflow: hidden;
+  background: #FAFAFA;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.5s var(--ease-editorial), box-shadow 0.5s var(--ease-editorial);
+}
+
+.pose-media-box picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pose-photograph {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Refined Minimal Hover */
+.pose-entity:hover .pose-photograph {
+  transform: scale(1.025);
+}
+
+.pose-entity:hover .pose-media-box {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific Pose Entity Canvas Dimensions */
+.pose-entity-1 {
+  width: clamp(340px, 32vw, 480px);
+  z-index: 10;
+}
+.pose-entity-1 .pose-media-box {
+  height: clamp(480px, 68vh, 680px);
+}
+
+.pose-entity-2 {
+  width: clamp(320px, 29vw, 440px);
+  z-index: 15;
+}
+.pose-entity-2 .pose-media-box {
+  height: clamp(450px, 64vh, 640px);
+}
+
+.pose-entity-3 {
+  width: clamp(350px, 34vw, 510px);
+  z-index: 20;
+}
+.pose-entity-3 .pose-media-box {
+  height: clamp(460px, 66vh, 660px);
+}
+
+.pose-entity-4 {
+  width: clamp(330px, 30vw, 460px);
+  z-index: 25;
+}
+.pose-entity-4 .pose-media-box {
+  height: clamp(480px, 68vh, 680px);
+}
+
+/* Photo-Specific Minimal Captions */
+.pose-caption-block {
+  margin-top: 1.1rem;
+  padding: 0 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.pose-index-tag {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+
+.pose-narrative {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+  margin: 0;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.pose-subdetail {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #777777;
+}
+
+/* Lateral Floating Editorial Typography (Two Opposing Lines) */
+.standing-spatial-typography {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 3vh, 3rem);
+  z-index: 4;
+  pointer-events: none;
+  user-select: none;
+}
+
+.standing-typo-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(3rem, 6vw, 6rem);
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.spatial-typo-word {
+  font-family: var(--font-sans);
+  font-size: clamp(3.5rem, 8.5vw, 8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: rgba(235, 235, 235, 0.75);
+  text-transform: uppercase;
+}
+
+/* Restrained Bottom Index Tracker */
+.standing-canvas-tracker {
+  position: absolute;
+  bottom: 2.8rem;
+  right: 4vw;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.tracker-digits {
+  color: var(--color-black);
+}
+
+.portrait-stage {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.standing-stage {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+/* Whole Photo Stack — Zero Cutouts */
+.collection-photos-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 76vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-slide-photo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  width: 100%;
+  height: 100%;
+  max-height: 74vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.55s var(--ease-editorial), transform 0.65s var(--ease-editorial);
+}
+
+.collection-slide-photo.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.collection-img {
+  width: 100%;
+  height: 100%;
+  max-height: 74vh;
+  object-fit: contain;
+  display: block;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+  background: #FAFAFA;
+}
+
+/* Editorial Description Stack */
+.collection-content-wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.collection-header-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.collection-desc-container {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+}
+
+.collection-slide-desc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: opacity 0.45s var(--ease-editorial), transform 0.55s var(--ease-editorial);
+}
+
+.collection-slide-desc.is-active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.slide-index-counter {
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.collection-slide-title {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.slide-cursive {
+  font-family: var(--font-cursive);
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  color: var(--color-dark);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+.slide-caption {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-dark);
+  margin-top: 1.2rem;
+  max-width: 440px;
+}
+
+.collection-nav-indicator {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2.2rem;
+}
+
+.indicator-step {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #CCCCCC;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.indicator-step.is-active {
+  color: var(--color-black);
+  border-bottom: 2px solid var(--color-black);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 01: INTRODUCTION & SPECIFICATIONS (CENTERED CUTOUT + KINETIC BACKDROP)
+   -------------------------------------------------------------------------- */
+.intro-track {
+  position: relative;
+  width: 100%;
+  min-height: 190vh;
+  background: var(--color-white);
+}
+
+.intro-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4vw 2.5rem;
+}
+
+.intro-backdrop-text {
+  position: absolute;
+  top: 42%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: 2; /* Sits behind the centered model cutout */
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.intro-text-row {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: clamp(5.5rem, 14vw, 13rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #ECECEC;
+  text-transform: uppercase;
+  will-change: transform;
+}
+
+.intro-center-stage {
+  position: relative;
+  z-index: 10; /* Visual foreground: Sits in front of kinetic text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  transform: none !important;
+}
+
+.intro-image-wrap {
+  position: relative;
+  width: clamp(320px, 46vw, 660px);
+  max-height: 52vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transform: none !important;
+}
+
+.intro-image-wrap picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 52vh;
+  width: auto;
+}
+
+.intro-cutout-photo {
+  display: block;
+  max-height: 52vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.08));
+}
+
+/* Redesigned Specifications Layout: Centered Below Image */
+.intro-specs-below {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.intro-specs-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.intro-specs-header .scene-index {
+  margin-bottom: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+}
+
+.intro-specs-header .intro-model-name {
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.intro-specs-header .intro-cursive {
+  margin: 0;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  color: var(--color-dark);
+}
+
+.model-specs-ribbon {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--color-dark);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.1rem 0;
+}
+
+.spec-ribbon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0.8rem;
+  border-right: 1px solid var(--color-border);
+}
+
+.spec-ribbon-item:last-child {
+  border-right: none;
+}
+
+.spec-ribbon-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.spec-ribbon-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-black);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   FOOTER — ONLY THE MODEL'S NAME
+   Pure, oversized Google Sans typography, no extra elements.
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  padding: 8vh 4vw;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.footer-name-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  will-change: transform, opacity;
+  transform: translate3d(0, var(--footer-y, 0px), 0) scale(var(--footer-scale, 1));
+}
+
+.footer-model-name {
+  font-family: var(--font-sans);
+  font-size: clamp(4.5rem, 15vw, 15rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--color-black);
+  user-select: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE REFINEMENTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .site-nav {
+    padding: 1.8rem 2rem;
+  }
+
+  .hero-meta {
+    right: 2rem;
+    bottom: 2rem;
+  }
+
+  .hero-model-container {
+    left: 3vw;
+    height: 74vh;
+    max-height: calc(100vh - 65px);
+  }
+
+  .hero-accent-cursive {
+    left: 30vw;
+    bottom: 8vh;
+  }
+
+  .collection-stage {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .intro-canvas {
+    padding: 2rem 1.5rem;
+  }
+
+  .intro-image-wrap {
+    width: clamp(280px, 78vw, 520px);
+    max-height: 44vh;
+  }
+
+  .intro-image-wrap picture,
+  .intro-cutout-photo {
+    max-height: 44vh;
+  }
+
+  .intro-text-row {
+    font-size: clamp(3.5rem, 16vw, 6.5rem);
+  }
+
+  .model-specs-ribbon {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1.2rem;
+  }
+
+  .spec-ribbon-item:nth-child(3n) {
+    border-right: none;
+  }
+
+  /* Collection Responsive on Tablet & Mobile */
+  .collection-stage {
+    grid-template-columns: 1fr !important;
+    height: auto;
+    gap: 1.5rem;
+  }
+
+  .standing-stage .collection-photos-wrap {
+    order: -1;
+  }
+
+  .collection-slide-photo,
+  .collection-img {
+    max-height: 45vh;
+  }
+
+  .collection-desc-container {
+    min-height: 190px;
+  }
+}
+
+@media (max-width: 600px) {
+  .model-specs-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1rem;
+  }
+
+  .spec-ribbon-item:nth-child(3n) {
+    border-right: 1px solid var(--color-border);
+  }
+
+  .spec-ribbon-item:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-nav {
+    padding: 1.4rem 1.5rem;
+  }
+
+  .nav-brand {
+    font-size: 0.8rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .hero-track {
+    height: 200vh;
+  }
+
+  .hero-model-container {
+    left: 1vw;
+    height: 64vh;
+    max-height: calc(100vh - 55px);
+  }
+
+  .hero-title-main {
+    font-size: clamp(3.8rem, 16vw, 7rem);
+  }
+
+  .hero-title-sub {
+    font-size: clamp(1.8rem, 8vw, 3.2rem);
+  }
+
+  .hero-accent-cursive {
+    left: 20vw;
+    bottom: 6vh;
+    font-size: 2.2rem;
+  }
+
+  .hero-meta {
+    display: none;
+  }
+
+  .footer-model-name {
+    font-size: clamp(3.5rem, 16vw, 7.5rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .standing-poses-track {
+    min-height: auto;
+  }
+
+  .standing-sticky-stage {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    padding: 5rem 5vw;
+  }
+
+  .standing-intro-block {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-bottom: 3.5rem;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .standing-canvas {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    pointer-events: auto;
+  }
+
+  .pose-entity {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 520px;
+    margin: 0 auto;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .pose-media-box {
+    height: 60vh !important;
+    max-height: 580px;
+  }
+
+  .standing-spatial-typography {
+    display: none;
+  }
+
+  .standing-canvas-tracker {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   SECTION 04: RUNWAY / RAMP WALK (SPLIT-SCREEN SLIDING ADVENTURE)
+   Scroll-driven sticky choreography: locks into full view, progresses through
+   all 3 looks, then scrolls to footer
+   ========================================================================== */
+.runway-adventure-section {
+  position: relative;
+  width: 100%;
+  height: 280vh; /* Smooth, natural scroll duration */
+  background-color: #000000;
+  z-index: 25;
+}
+
+.runway-sticky-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000000;
+  contain: paint layout;
+}
+
+.runway-adventure-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: none;
+}
+
+.runway-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  visibility: visible; /* Render managed smoothly by hardware transforms */
+}
+
+.runway-slide.is-active {
+  pointer-events: auto;
+}
+
+/* Left & Right Halves with Split Transition */
+.runway-half {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.runway-half-left {
+  left: 0;
+}
+
+.runway-half-right {
+  left: 50%;
+}
+
+/* Slide background covers for photographic half */
+.runway-bg-cover {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.runway-bg-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 40%);
+  pointer-events: none;
+}
+
+/* Content Panel Half styling */
+.runway-content-bg {
+  background-color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.runway-half-left.runway-content-bg {
+  border-left: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.runway-content-panel {
+  width: 100%;
+  max-width: 560px;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.runway-eyebrow {
+  display: inline-block;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #888888;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
+
+.runway-heading {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 1.6rem 0;
+}
+
+.runway-description {
+  font-family: var(--font-primary);
+  font-size: clamp(0.95rem, 1.25vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #b0b0b0;
+  margin: 0 0 2.4rem 0;
+  max-width: 480px;
+}
+
+.runway-specs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  width: 100%;
+}
+
+.runway-specs-meta span {
+  font-family: var(--font-primary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #777777;
+  text-transform: uppercase;
+}
+
+/* Floating Vertical Slide Indicator (Dots only, NO arrows) */
+.runway-controls {
+  position: absolute;
+  right: clamp(1.5rem, 3vw, 2.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  z-index: 30;
+}
+
+.runway-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.runway-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.runway-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.25);
+}
+
+.runway-dot.is-active {
+  background: #ffffff;
+  height: 24px;
+  border-radius: 4px;
+}
+
+/* Minimal Corner Counter */
+.runway-counter {
+  position: absolute;
+  left: clamp(1.5rem, 4vw, 3rem);
+  bottom: clamp(1.5rem, 3.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.runway-counter-label {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #666666;
+  text-transform: uppercase;
+}
+
+.runway-counter-nums {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+}
+
+/* Responsive Layout for Mobile / Tablet */
+@media (max-width: 860px) {
+  .runway-adventure-section {
+    height: 300vh;
+  }
+
+  .runway-sticky-stage {
+    height: 100vh;
+  }
+
+  .runway-half {
+    width: 100%;
+    height: 50%;
+  }
+
+  .runway-half-left {
+    top: 0;
+    left: 0;
+  }
+
+  .runway-half-right {
+    top: 50%;
+    left: 0;
+  }
+
+  .runway-content-panel {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .runway-heading {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .runway-description {
+    font-size: 0.88rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .runway-controls {
+    right: 1rem;
+  }
+
+  .runway-counter {
+    left: 1.2rem;
+    bottom: 1rem;
+  }
+}
+
+/* ==========================================================================
+   PARALLAX SCROLLING SECTION (OSMO / 21ST.DEV PARALLAX COMPONENT)
+   ========================================================================== */
+.parallax {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.parallax__header {
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax__visuals {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 120%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.parallax__black-line-overflow {
+  z-index: 20;
+  background-color: #000000;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+}
+
+.parallax__layers {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.parallax__layer-img {
+  pointer-events: none;
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 117.5%;
+  position: absolute;
+  top: -17.5%;
+  left: 0;
+  will-change: transform;
+}
+
+.parallax__layer-img[data-parallax-layer="1"] {
+  z-index: 1;
+}
+
+.parallax__layer-img[data-parallax-layer="2"] {
+  z-index: 2;
+}
+
+.parallax__layer-title,
+[data-parallax-layer="3"] {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100svh;
+  min-height: 100vh;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.parallax__layer-img[data-parallax-layer="4"] {
+  z-index: 4;
+}
+
+.parallax__title {
+  pointer-events: auto;
+  text-align: center;
+  text-transform: none;
+  margin-top: 0;
+  margin-bottom: 0.1em;
+  margin-right: 0.075em;
+  font-family: var(--font-primary);
+  font-size: clamp(3.5rem, 10vw, 9.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #ffffff;
+  position: relative;
+}
+
+.parallax__fade {
+  z-index: 30;
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 25%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.738) 19%, rgba(0, 0, 0, 0.541) 34%, rgba(0, 0, 0, 0.382) 47%, rgba(0, 0, 0, 0.278) 56.5%, rgba(0, 0, 0, 0.194) 65%, rgba(0, 0, 0, 0.126) 73%, rgba(0, 0, 0, 0.075) 80.2%, rgba(0, 0, 0, 0.042) 86.1%, rgba(0, 0, 0, 0.021) 91%, rgba(0, 0, 0, 0.008) 95.2%, rgba(0, 0, 0, 0.002) 98.2%, transparent 100%);
+  pointer-events: none;
+}
+
+.parallax__content {
+  padding: clamp(4rem, 8vw, 8rem) 2rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  position: relative;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.osmo-icon-svg {
+  width: clamp(5rem, 12vw, 10rem);
+  position: relative;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   REDUCED MOTION SUPPORT
+   Preserves visual composition and layering without aggressive transforms
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-track,
+  .scene-track,
+  .collection-track,
+  .standing-poses-track {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero-sticky-canvas,
+  .scene-sticky-frame,
+  .collection-sticky-frame,
+  .standing-sticky-stage {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    padding: 10vh 0;
+  }
+
+  .hero-text-row-main,
+  .hero-text-row-sub,
+  .hero-accent-cursive,
+  .hero-model-container,
+  .intro-text-row,
+  .intro-image-wrap,
+  .intro-specs-below,
+  .collection-slide-photo,
+  .collection-slide-desc,
+  .standing-intro-block,
+  .pose-entity,
+  .standing-spatial-typography,
+  .footer-name-wrap {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+

@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Operating System & Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Personal Documents & Resumes (PII Protection)
+*Resume*
+*resume*
+resume_*.html
+*.pdf
+*.pdf.png
+test_new_skills.*
+
+# Test outputs and temporary screenshots
+test-artifacts/
+screenshot_*.png
+test_*.png
+hero_subject_*.png
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

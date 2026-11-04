@@ -1,0 +1,18 @@
+{
+  "name": "model-editorial-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium Fashion Editorial Model Portfolio powered by StringTune",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8080",
+    "start": "python3 -m http.server 8080"
+  },
+  "dependencies": {
+    "@fiddle-digital/string-tune": "^1.2.7",
+    "ogl": "^1.0.11"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.16.0"
+  }
+}
